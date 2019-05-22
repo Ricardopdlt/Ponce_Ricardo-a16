@@ -1,4 +1,4 @@
-//Ex14 pointers and functions
+//Ex42 pointers and functions
 
 #include <iostream>
 #include <stdio.h>
