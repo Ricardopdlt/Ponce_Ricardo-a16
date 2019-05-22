@@ -7,32 +7,41 @@
 using namespace System;
 using namespace std;
 
-double dollarExchange(double dollarExchangeRate, double amount)
+double dollarExchange(double *dollarExchangeRate, double *amount)
 {
 	//this process receives dollars and returns soles
-	return amount * dollarExchangeRate;
+	return *amount * *dollarExchangeRate;
 }
 
-double solExchange(double solExchangeRate, double amount)
+double solExchange(double *solExchangeRate, double *amount)
 {
 	// this process receives soles and returns dollars
-	return amount / solExchangeRate;
+	return *amount / *solExchangeRate;
 }
+
 int main()
 {
 	int n1;
 
 	int option;
-	double realAmount;
+
+	double amount1;
+	double *realAmount;
+	realAmount = &amount1;
 
 	double realdollarExchangeRate = 3.33;
+	double *realRate;
+	realRate = &realdollarExchangeRate;
 
 	while (option != 3)
 	{
 		cout << "************************************************************************************************************************ \n";
 		cout << endl;
 		cout << "What do you want to do? \n";
-		cout << "Exchange dollars to soles [1] or exchange soles to dollars [2], but if you don't want to do anything, just select [3]: ";
+		cout << "[1] Exchange dollars to soles \n";
+		cout << "[2] Exchange soles to dollars \n";
+		cout << "[3] If you don't want to do anything, just exit \n";
+		cout << "Make your choice: ";
 		cin >> option;
 
 
@@ -43,12 +52,12 @@ int main()
 			{
 				cout << endl;
 				cout << "Enter the amount you want to exchange: ";
-				cin >> realAmount;
+				cin >> amount1;
 				cout << endl;
 
-				if (realAmount > 0)
+				if (amount1 > 0)
 				{
-					cout << "The exchange is : S/" << dollarExchange(realdollarExchangeRate, realAmount) << endl;
+					cout << "The exchange is : S/" << dollarExchange(realRate, realAmount) << endl;
 					cout << endl;
 
 					n1 = 3;
@@ -71,13 +80,13 @@ int main()
 			{
 				cout << endl;
 				cout << "Enter the amount you want to exchange: ";
-				cin >> realAmount;
+				cin >> amount1;
 				cout << endl;
 
 
-				if (realAmount > 0)
+				if (amount1> 0)
 				{
-					cout << "The exchange is : $" << solExchange(realdollarExchangeRate, realAmount) << endl;
+					cout << "The exchange is : $" << solExchange(realRate, realAmount) << endl;
 					cout << endl;
 
 					n1 = 3;
